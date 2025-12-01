@@ -17,7 +17,7 @@ A simple Telegram bot built with Golang, using [Cobra](https://github.com/spf13/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/tg-bot.git
+git clone https://github.com/Sadko-Vadym/tg-bot.git
 cd tg-bot
 ```
 
