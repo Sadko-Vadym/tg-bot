@@ -70,8 +70,10 @@ jobs:
         run: |
           GIT_COMMIT=${{ steps.git.outputs.sha }}
           sed -i "s|tag:.*|tag: \"${{ env.VERSION }}-${GIT_COMMIT}\"|" helm/kbot/values.yaml
-          sed -i "s|os:.*|os: linux|" helm/kbot/values.yaml
-          sed -i "s|arch:.*|arch: amd64|" helm/kbot/values.yaml
+          sed -i 's|^  os:.*|  os: "linux"|' helm/kbot/values.yaml
+          sed -i 's|^  arch:.*|  arch: "amd64"|' helm/kbot/values.yaml
+          echo "Updated values.yaml:"
+          cat helm/kbot/values.yaml | grep -A 5 "^image:"
 
       - name: Configure Git for commits
         run: |

@@ -3,8 +3,8 @@ image:
   registry: "ghcr.io"
   repository: "den-vasyliev/kbot"
   tag: "v1.0.0-unknown"
-  os: linux
-  arch: amd64
+  os: "linux"
+  arch: "amd64"
 
 imagePullSecrets: []
 nameOverride: ""
