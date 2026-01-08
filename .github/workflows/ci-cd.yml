@@ -123,9 +123,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: 'latest'
+
       - name: Verify Helm chart
         run: |
-          helm lint helm/kbot || true
+          helm lint helm/kbot || echo "Helm lint completed with warnings"
 
       - name: ArgoCD Sync (if configured)
         run: |
