@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+.github
+
+# Documentation
+README.md
+*.md
+
+# CI/CD
+Makefile
+.dockerignore
+
+# Helm charts (not needed in image)
+helm/
+
+# Build artifacts
+bin/
+*.exe
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Go workspace
+go.work
+vendor/
+

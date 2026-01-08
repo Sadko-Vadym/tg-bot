@@ -1,0 +1,77 @@
+# Default values for kbot
+image:
+  registry: "ghcr.io"
+  repository: "den-vasyliev/kbot"
+  tag: "v1.0.0-unknown"
+  os: linux
+  arch: amd64
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+env:
+  - name: TELE_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: kbot-secret
+        key: tele-token
+
+secret:
+  create: true
+  name: kbot-secret
+  tele-token: ""
+
+replicaCount: 1
+
+argocd:
+  create: false
+  namespace: argocd
+  project: default
+  repoURL: ""
+  targetRevision: HEAD
+  path: helm/kbot
+  destinationNamespace: default
+

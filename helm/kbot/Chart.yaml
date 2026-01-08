@@ -1,0 +1,7 @@
+apiVersion: v2
+name: kbot
+description: A Helm chart for Telegram Bot (kbot)
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+
